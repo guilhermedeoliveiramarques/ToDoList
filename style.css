@@ -209,3 +209,24 @@ li {
   border-radius: 6px;
   cursor: pointer;
 }
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .input-section {
+    flex-direction: column;
+  }
+  
+  .input-section input[type="text"],
+  .input-section input[type="time"],
+  .input-section button {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+  
+  .actions button {
+    font-size: 1.5rem;
+    margin-left: 6px;
+  }
+}
+
