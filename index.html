@@ -3,26 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ToDo List | Guilherme Marques</title>
+  <title>Minha Lista de Tarefas</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>ToDo List | Guilherme Marques</h1>
+
+  <div class="name-overlay" id="nameOverlay">
+    <div class="name-box">
+      <h2>Olá! Qual seu nome?</h2>
+      <input type="text" id="usernameInput" placeholder="Digite seu nome..." />
+      <button onclick="confirmName()">Começar</button>
+    </div>
+  </div>
+
+  <div class="container" id="todoContainer" style="display: none;">
+    <h2 id="taskHeader">Minha Lista de Tarefas</h2>
 
     <div class="input-section">
-      <input type="text" id="taskInput" placeholder="Digite uma tarefa..." />
-      <button onclick="addTask()">Adicionar</button>
+      <input type="text" id="taskTitle" placeholder="Título da tarefa" />
+      <input type="time" id="taskStart" />
+      <input type="time" id="taskEnd" />
     </div>
 
-    <div class="search-section">
-      <input type="text" id="searchInput" placeholder="Pesquisar tarefas..." onkeyup="searchTasks()" />
+    <div class="input-section">
+      <input type="text" id="taskDesc" placeholder="Descrição (opcional)" />
+      <button onclick="addOrUpdateTask()">Salvar</button>
     </div>
+
+    <input type="text" id="searchInput" placeholder="Pesquisar tarefas..." oninput="filterTasks()" />
 
     <ul id="taskList"></ul>
   </div>
 
-  <script src="script.js"></script>
   <div id="toast-container"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
