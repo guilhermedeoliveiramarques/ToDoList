@@ -1,84 +1,86 @@
 :root {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #f1f5f9;
+  --bg: #0f1c2e;
+  --card: #1f2d40;
   --accent: #2dd4bf;
-  --accent-hover: #14b8a6;
-  --muted: #94a3b8;
-  --shadow: rgba(0, 0, 0, 0.4);
+  --text: #e0f2f1;
+  --error: #ef4444;
+  --white: #ffffff;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', sans-serif;
 }
 
 body {
+  margin: 0;
   background: var(--bg);
   color: var(--text);
   display: flex;
   justify-content: center;
-  padding: 50px 20px;
-  min-height: 100vh;
+  padding: 40px 20px;
 }
 
 .container {
   background: var(--card);
-  width: 100%;
-  max-width: 600px;
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px var(--shadow);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-h1 {
+h2 {
   text-align: center;
-  color: var(--accent);
-  margin-bottom: 25px;
-  font-size: 2rem;
+  margin-bottom: 30px;
 }
 
-.input-section,
-.search-section {
+.input-section {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="time"] {
   flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #334155;
+  padding: 10px;
+  background: #32475c;
   color: var(--text);
-  outline: none;
-  transition: box-shadow 0.3s ease;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
-input[type="text"]::placeholder {
-  color: var(--muted);
+input::placeholder {
+  color: #94a3b8;
 }
 
-input[type="text"]:focus {
-  box-shadow: 0 0 0 2px var(--accent);
+#searchInput {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  background: #32475c;
+  color: var(--text);
+  border: 1px solid #475569;
 }
 
 button {
-  padding: 12px 20px;
+  padding: 10px 20px;
   background: var(--accent);
-  border: none;
   color: var(--bg);
-  border-radius: 10px;
-  font-weight: bold;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: bold;
+  transition: background 0.3s;
 }
 
 button:hover {
-  background: var(--accent-hover);
+  background: #1ecab8;
 }
 
 ul {
@@ -87,51 +89,40 @@ ul {
 }
 
 li {
-  background: var(--card);
-  border: 1px solid #334155;
+  background: #293b51;
+  border-radius: 8px;
   padding: 14px;
-  border-radius: 12px;
   margin-bottom: 12px;
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-wrap: wrap;
+  color: var(--text);
 }
 
-li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-li .text {
-  flex: 1;
-  margin-right: 12px;
+.text {
   font-size: 1rem;
-  color: var(--text);
+  font-weight: 600;
 }
 
-li input.edit-input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background: #334155;
-  color: var(--text);
+.task-details {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin-top: 4px;
+  line-height: 1.4;
 }
 
 .actions button {
-  margin-left: 8px;
-  background: none;
+  background: transparent;
   border: none;
-  font-size: 1.2rem;
-  color: var(--muted);
   cursor: pointer;
-  transition: color 0.2s ease, transform 0.2s ease;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  color: var(--accent);
 }
 
 .actions button:hover {
-  color: var(--accent);
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 #toast-container {
@@ -142,19 +133,19 @@ li input.edit-input {
 }
 
 .toast {
-  background: #2dd4bf;
-  color: #0f172a;
+  background: var(--accent);
+  color: var(--bg);
   padding: 14px 20px;
   margin-bottom: 10px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.4s ease, fadeOut 0.5s ease 2.5s forwards;
   font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  animation: slideIn 0.4s ease, fadeOut 0.5s ease 2.5s forwards;
 }
 
 .toast.error {
-  background: #ef4444;
-  color: #fff;
+  background: var(--error);
+  color: var(--white);
 }
 
 @keyframes slideIn {
@@ -175,3 +166,46 @@ li input.edit-input {
   }
 }
 
+/* Nome Overlay */
+.name-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 28, 46, 0.98);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.name-box {
+  background: #1f2d40;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.name-box h2 {
+  color: var(--accent);
+  margin-bottom: 15px;
+}
+
+.name-box input {
+  padding: 10px;
+  border: 1px solid #475569;
+  background: #32475c;
+  color: var(--text);
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.name-box button {
+  background: var(--accent);
+  border: none;
+  padding: 10px 20px;
+  color: var(--bg);
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
