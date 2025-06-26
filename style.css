@@ -1,0 +1,177 @@
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f1f5f9;
+  --accent: #2dd4bf;
+  --accent-hover: #14b8a6;
+  --muted: #94a3b8;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+  min-height: 100vh;
+}
+
+.container {
+  background: var(--card);
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+h1 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.input-section,
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #334155;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+  color: var(--muted);
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+button {
+  padding: 12px 20px;
+  background: var(--accent);
+  border: none;
+  color: var(--bg);
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: var(--card);
+  border: 1px solid #334155;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+li .text {
+  flex: 1;
+  margin-right: 12px;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+li input.edit-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #334155;
+  color: var(--text);
+}
+
+.actions button {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.actions button:hover {
+  color: var(--accent);
+  transform: scale(1.2);
+}
+
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.toast {
+  background: #2dd4bf;
+  color: #0f172a;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.4s ease, fadeOut 0.5s ease 2.5s forwards;
+  font-weight: bold;
+}
+
+.toast.error {
+  background: #ef4444;
+  color: #fff;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
